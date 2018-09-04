@@ -223,22 +223,11 @@ generate_event_logging_sources()
     $PYTHON -B $__PythonWarningFlags "$__ProjectRoot/src/scripts/genEventPipe.py" --man "$__ProjectRoot/src/vm/ClrEtwAll.man" --intermediate "$__OutputEventingDir/eventpipe"
 
     # determine the logging system
-    case $__BuildOS in
-        Linux|FreeBSD)
-            echo "Laying out dynamically generated Event Logging Implementation of Lttng"
-            $PYTHON -B $__PythonWarningFlags "$__ProjectRoot/src/scripts/genLttngProvider.py" --man "$__ProjectRoot/src/vm/ClrEtwAll.man" --intermediate "$__OutputEventProviderDir"
-            if [[ $? != 0 ]]; then
-                exit 1
-            fi
-            ;;
-        *)
-            echo "Laying out dummy event logging provider"
-            $PYTHON -B $__PythonWarningFlags "$__ProjectRoot/src/scripts/genDummyProvider.py" --man "$__ProjectRoot/src/vm/ClrEtwAll.man" --intermediate "$__OutputEventProviderDir"
-            if [[ $? != 0 ]]; then
-                exit 1
-            fi
-            ;;
-    esac
+    echo "Laying out dummy event logging provider"
+    $PYTHON -B $__PythonWarningFlags "$__ProjectRoot/src/scripts/genDummyProvider.py" --man "$__ProjectRoot/src/vm/ClrEtwAll.man" --intermediate "$__OutputEventProviderDir"
+    if [[ $? != 0 ]]; then
+        exit 1
+    fi
 }
 
 generate_event_logging()
