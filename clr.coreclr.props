@@ -17,7 +17,7 @@
     <FeatureStubsAsIL>true</FeatureStubsAsIL>
 
     <FeatureCoreFxGlobalization>true</FeatureCoreFxGlobalization>
-    <FeaturePerfTracing>true</FeaturePerfTracing>
+    <FeaturePerfTracing>false</FeaturePerfTracing>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetsWindows)' == 'true'">
